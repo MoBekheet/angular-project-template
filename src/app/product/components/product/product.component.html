@@ -1,0 +1,10 @@
+<p>product works!</p>
+<form [formGroup]="formGroup" focusInvalidInput>
+  <input type="text" formControlName="name"/>
+  <button type="submit" (click)="test(formGroup)">submit</button>
+</form>
+<br/>
+<form #form="ngForm" focusInvalidInput>
+  <input type="text" name="age" ngModel required/>
+  <button type="submit" (click)="test(form)">submit</button>
+</form>
