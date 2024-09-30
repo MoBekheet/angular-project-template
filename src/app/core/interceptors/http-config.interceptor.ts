@@ -11,7 +11,7 @@ export const httpConfigInterceptor: HttpInterceptorFn = (req, next) => {
 
   // If there is already an ongoing request with the same key, cancel the new one.
   if (requests.has(requestKey)) {
-    alert('There is a duplication in requests.');
+    console.warn('>> There is a duplication in requests. <<', req.url);
     return of();
   }
 
