@@ -22,7 +22,7 @@ export const httpConfigInterceptor: HttpInterceptorFn = (req, next) => {
   let clonedRequest: HttpRequest<any>;
   if (authService.isLoggedIn) {
     clonedRequest = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${authService.getToken}`),
+      headers: req.headers.set('authorization', `Bearer ${authService.getToken}`),
     });
   } else {
     clonedRequest = req.clone();

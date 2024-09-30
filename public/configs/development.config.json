@@ -1,0 +1,8 @@
+{
+  "language": "en",
+  "projectName": "My Angular Project - Development",
+  "apiUrl": "http://localhost:3000/api",
+  "featureFlags": {
+    "enableNewFeature": true
+  }
+}

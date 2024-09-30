@@ -1,0 +1,8 @@
+{
+  "language": "en",
+  "projectName": "My Angular Project - Production",
+  "apiUrl": "https://api.example.com",
+  "featureFlags": {
+    "enableNewFeature": false
+  }
+}
