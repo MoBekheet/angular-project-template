@@ -1,5 +1,5 @@
-import { Inject, Injectable, PLATFORM_ID, isDevMode } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Inject, Injectable, PLATFORM_ID, isDevMode, inject } from '@angular/core';
+import { map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environment/environment.development';
 import { isPlatformBrowser } from '@angular/common';
@@ -21,20 +21,10 @@ export class ConfigurationService {
   }
 
   // Load the configuration file
-  loadConfig(): Observable<any> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.http.get<AppConfig>(this.configFilePath).pipe(
-        map((config: AppConfig) => {
-          this.config = config;
-          console.error({ config });
-          return this.config;
-        })
-      );
-    }
-    return new Observable(observer => {
-      observer.next(null);
-      observer.complete();
-    });
+  loadConfig() {
+    return isPlatformBrowser(this.platformId)
+      ? this.http.get<AppConfig>(this.configFilePath).pipe(map((config: AppConfig) => (this.config = config)))
+      : of(null);
   }
 
   // Get a specific setting from the config

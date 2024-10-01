@@ -17,7 +17,7 @@ const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: Http
 
 // Function to load configuration at the startup
 export function initializeApp(configService: ConfigurationService) {
-  return () => configService.loadConfig().pipe(first());
+  return () => configService.loadConfig();
 }
 
 export const appConfig: ApplicationConfig = {
@@ -41,7 +41,7 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       multi: true,
-      deps: [HttpClient],
+      deps: [ConfigurationService],
     },
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
